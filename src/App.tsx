@@ -1,13 +1,9 @@
 import { useEffect, useState } from "react";
-import {
-  Admin,
-  DataProvider,
-  Loading,
-  Resource,
-} from "react-admin";
+import { Admin, DataProvider, Loading, Resource } from "react-admin";
 import { CssBaseline } from "@mui/material";
 import buildHasuraProvider from "ra-data-hasura";
-import { MenuList } from "./modules/menu/components/menu-list.component";
+import { MenuList } from "./modules/menu/components/menu-list/menu-list.component";
+import { MenuEdit } from "./modules/menu/components/menu-edit/menu-edit.component";
 
 export const App = () => {
   const [dataProvider, setDataProvider] = useState<DataProvider<string> | null>(
@@ -33,7 +29,7 @@ export const App = () => {
     <>
       <CssBaseline />
       <Admin dataProvider={dataProvider}>
-        <Resource name={"menu"} list={MenuList} />
+        <Resource name={"menu"} list={MenuList} edit={MenuEdit} />
       </Admin>
     </>
   );
